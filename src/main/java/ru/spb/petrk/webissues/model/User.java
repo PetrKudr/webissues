@@ -1,12 +1,14 @@
 package ru.spb.petrk.webissues.model;
 
 import java.util.List;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import ru.spb.petrk.webissues.security.AuthorizationContext;
@@ -49,6 +51,7 @@ public class User extends AbstractEntity implements AuthorizationContext {
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
     @Column(name = "roles")
+    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "User_id"))
     private List<Role> roles = emptyList();
 
     

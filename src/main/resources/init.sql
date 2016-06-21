@@ -4,7 +4,7 @@ grant all privileges on issues_system.* to 'issues_user';
 
 -- Launch an application here!
 
-insert into users (
+insert into issues_system.users (
    id
   ,blocked
   ,email
@@ -22,7 +22,7 @@ insert into users (
   ,'admin'  -- password - IN varchar(255)
 );
 
-insert into user_roles (
+insert into issues_system.user_roles (
    User_id
   ,roles
 ) VALUES (
